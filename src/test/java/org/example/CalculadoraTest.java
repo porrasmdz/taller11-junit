@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  *
@@ -172,18 +173,18 @@ public class CalculadoraTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of exponenciacion method, of class Calculadora.
-     */
     @Test
-    public void testExponenciacion() {
-        System.out.println("exponenciacion");
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.exponenciacion();
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @DisplayName("Exponenciación: Potencia positiva")
+    public void testExponenciacionPotenciaPositiva() {
+        
+        
+        Calculadora calculadora = new Calculadora();
+        
+        double result = calculadora.exponenciacion(2, 1);
+        
+        assertEquals(2, result, 0);
+        
+        fail("No es igual a 2 el resultado.");
     }
 
     /**
