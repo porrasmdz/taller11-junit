@@ -20,8 +20,26 @@ public class CalculadoraTest {
     private Calculadora calculadora;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         calculadora = new Calculadora();
+        assertNotNull(calculadora);
+    }
+    
+    
+    @BeforeAll
+    public static void setUpBeforeClass() {
+        System.out.println("Iniciando todas las pruebas de Calculadora.");
+    }
+
+    @AfterAll
+    public static void tearDownAfterClass() {
+        System.out.println("Finalizando todas las pruebas de Calculadora.");
+    }
+
+
+    @AfterEach
+    public void tearDown() {
+        System.out.println("Prueba finalizada.");
     }
 
     @Test
@@ -95,5 +113,8 @@ public class CalculadoraTest {
                 ()-> assertNotNull(result));
     }
     
-    
-}
+
+    //----------------------MULTIPLICACION Y DIVISION----------------------------------
+
+
+    }
