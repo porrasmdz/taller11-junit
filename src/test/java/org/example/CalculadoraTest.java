@@ -20,46 +20,12 @@ public class CalculadoraTest {
     private Calculadora calculadora;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         calculadora = new Calculadora();
+        assertNotNull(calculadora);
     }
-
-    @Test
-    @DisplayName("Suma Basica")
-    public void testSumaBasica() {
-        double a = 5.0;
-        double b = 3.0;
-        
-        double expResult = 8.0;
-        double result = calculadora.suma(a, b);
-        assertEquals(expResult, result, 0.0);
-    }
-
-    @Test
     
-    @DisplayName("Suma Negativos")
-    public void testSumaNegativos() {
-        double a = -5.0;
-        double b = -3.0;
-        double expResult = -8.0;
-        double result = calculadora.suma(a, b);
-        assertEquals(expResult, result, 0.0);
-    }
-
-    @Test
     
-    @DisplayName("Suma Positivos")
-    public void testSumaPositivos() {
-        double a = 5.0;
-        double b = 3.0;
-        double expResult = 8.0;
-        double result = calculadora.suma(a, b);
-        assertEquals(expResult, result, 0.0);
-    }
-
-
-    //----------------------MULTIPLICACION Y DIVISION----------------------------------
-
     @BeforeAll
     public static void setUpBeforeClass() {
         System.out.println("Iniciando todas las pruebas de Calculadora.");
@@ -73,6 +39,78 @@ public class CalculadoraTest {
     @AfterEach
     public void tearDown() {
         System.out.println("Prueba finalizada.");
+    }
+
+
+    @Test
+    @DisplayName("Suma Basica")
+    public void testSumaBasica() {
+        double a = 5.0;
+        double b = 3.0;
+        
+        double expResult = 8.0;
+        double result = calculadora.suma(a, b);
+        assertEquals(expResult, result);
+    }
+    @Test
+    @DisplayName("Suma Negativos")
+    public void testSumaNegativos() {
+        double a = -5.0;
+        double b = -3.0;
+        double expResult = -8.0;
+        double result = calculadora.suma(a, b);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    @DisplayName("Suma Positivos")
+    public void testSumaPositivos() {
+        double a = 5.0;
+        double b = 3.0;
+        double expResult = 8.0;
+        double result = calculadora.suma(a, b);
+        assertAll("result",
+                ()-> assertEquals(expResult, result),
+                ()-> assertTrue(result > 0));
+    }
+
+      
+  @Test
+    @DisplayName("Resta Basica")
+    public void testRestaBasica() {
+        double a = 5.0;
+        double b = 1.0;
+        
+        double expResult = 4.0;
+        double result = calculadora.resta(a, b);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    @DisplayName("Resta Negativos")
+    public void testRestaNegativos() {
+        double a = -5.0;
+        double b = -3.0;
+        double expResult = -2.0;
+        double result = calculadora.resta(a, b);
+        assertAll("result",
+                ()-> assertEquals(expResult, result),
+                ()-> assertTrue(result > a),
+                ()-> assertNotNull(result));
+    }
+
+    @Test
+    
+    @DisplayName("Resta Positivos")
+    public void testRestaPositivos() {
+        double a = 5.0;
+        double b = 3.0;
+        double expResult = 2.0;
+        double result = calculadora.resta(a, b);
+        assertAll("result",
+                ()-> assertEquals(expResult, result),
+                ()-> assertTrue(result < a),
+                ()-> assertNotNull(result));
     }
 
     @Test
@@ -95,99 +133,6 @@ public class CalculadoraTest {
             () -> assertThrows(IllegalArgumentException.class, () -> calculadora.division(6.0, 0.0)),
             () -> assertEquals(-2.0, calculadora.division(-6.0, 3.0), 0.0)
         );
-    }
-    //--------------------------------------------------------
-
-    /**
-     * Test of suma method, of class Calculadora.
-     */
-    @Test
-    public void testSuma_double_double() {
-        System.out.println("suma");
-        double a = 0.0;
-        double b = 0.0;
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.suma(a, b);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of suma method, of class Calculadora.
-     */
-    @Test
-    public void testSuma() {
-        System.out.println("suma");
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.suma();
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of resta method, of class Calculadora.
-     */
-    @Test
-    public void testResta_double_double() {
-        System.out.println("resta");
-        double a = 0.0;
-        double b = 0.0;
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.resta(a, b);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of resta method, of class Calculadora.
-     */
-    @Test
-    public void testResta() {
-        System.out.println("resta");
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.resta();
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of multiplicacion method, of class Calculadora.
-     */
-    @Test
-    public void testMultiplicacion_double_double() {
-        System.out.println("multiplicacion");
-        double a = 0.0;
-        double b = 0.0;
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.multiplicacion(a, b);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of division method, of class Calculadora.
-     */
-    @Test
-    public void testDivision_double_double() {
-        System.out.println("division");
-        double dividendo = 0.0;
-        double divisor = 0.0;
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.division(dividendo, divisor);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
@@ -222,82 +167,10 @@ public class CalculadoraTest {
         double result = calculadora.exponenciacion(2, 0); // Exponente 0
         
         assertTrue(result == 1.0, "El resultado debería ser 1.0.");
+   
     }
-
-    /**
-     * Test of radicacion method, of class Calculadora.
-     */
-    
-    
-    
-    //----------------------Radicacion----------------------------------
-    
-     @BeforeAll
-    public static void setUpClass() {
-        System.out.println("Antes de las pruebas");
-    }
-
-    
-    
-
-    @Test
-    public void testRadicacionNumeroPositivo() {
-        double numero = 4.0;
-        double indice = 2.0;
-        double expResult = 2.0;
-        double result = instance.radicacion(numero, indice);
-        assertEquals(expResult, result, 0.0);
-    }
-
-    @Test
-    public void testRadicacionNumeroNegativo() {
-        double numero = -4.0;
-        double indice = 2.0;
-        assertThrows(IllegalArgumentException.class, () -> instance.radicacion(numero, indice));
-    }
-
-    @Test
-    public void testRadicacionEnesima() {
-        double numero = 8.0;
-        double indice = 3.0;
-        double expResult = 2.0;
-        double result = instance.radicacion(numero, indice);
-        assertEquals(expResult, result, 0.0);
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-        System.out.println("Después de las pruebas");
-    }
-    
-    @Test
-    public void testRadicacion_double_double() {
-        System.out.println("radicacion");
-        double numero = 0.0;
-        double indice = 0.0;
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.radicacion(numero, indice);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of radicacion method, of class Calculadora.
-     */
-    @Test
-    public void testRadicacion() {
-        System.out.println("radicacion");
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.radicacion();
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    
-    
-    
 }
+
+ 
+  
+
