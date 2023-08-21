@@ -32,30 +32,68 @@ public class CalculadoraTest {
         
         double expResult = 8.0;
         double result = calculadora.suma(a, b);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     @Test
-    
     @DisplayName("Suma Negativos")
     public void testSumaNegativos() {
         double a = -5.0;
         double b = -3.0;
         double expResult = -8.0;
         double result = calculadora.suma(a, b);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
 
     @Test
-    
     @DisplayName("Suma Positivos")
     public void testSumaPositivos() {
         double a = 5.0;
         double b = 3.0;
         double expResult = 8.0;
         double result = calculadora.suma(a, b);
-        assertEquals(expResult, result, 0.0);
+        assertAll("result",
+                ()-> assertEquals(expResult, result),
+                ()-> assertTrue(result > 0));
+    }
+    
+  @Test
+    @DisplayName("Resta Basica")
+    public void testRestaBasica() {
+        double a = 5.0;
+        double b = 1.0;
+        
+        double expResult = 4.0;
+        double result = calculadora.resta(a, b);
+        assertEquals(expResult, result);
     }
 
+    @Test
+    @DisplayName("Resta Negativos")
+    public void testRestaNegativos() {
+        double a = -5.0;
+        double b = -3.0;
+        double expResult = -2.0;
+        double result = calculadora.resta(a, b);
+        assertAll("result",
+                ()-> assertEquals(expResult, result),
+                ()-> assertTrue(result > a),
+                ()-> assertNotNull(result));
+    }
+
+    @Test
+    
+    @DisplayName("Resta Positivos")
+    public void testRestaPositivos() {
+        double a = 5.0;
+        double b = 3.0;
+        double expResult = 2.0;
+        double result = calculadora.resta(a, b);
+        assertAll("result",
+                ()-> assertEquals(expResult, result),
+                ()-> assertTrue(result < a),
+                ()-> assertNotNull(result));
+    }
+    
     
 }
