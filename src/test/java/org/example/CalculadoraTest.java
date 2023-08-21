@@ -21,7 +21,7 @@ public class CalculadoraTest {
 
     @BeforeEach
     public void setUp() {
-        calculadora = new Calculadora();
+        this.calculadora = new Calculadora();
         assertNotNull(calculadora);
     }
     
@@ -75,7 +75,7 @@ public class CalculadoraTest {
     }
 
       
-  @Test
+    @Test
     @DisplayName("Resta Basica")
     public void testRestaBasica() {
         double a = 5.0;
@@ -100,7 +100,6 @@ public class CalculadoraTest {
     }
 
     @Test
-    
     @DisplayName("Resta Positivos")
     public void testRestaPositivos() {
         double a = 5.0;
@@ -114,6 +113,8 @@ public class CalculadoraTest {
     }
 
     @Test
+    @DisplayName("Pruebas de multiplicacion")
+    
     public void testMultiplicacion() {
         assertAll(
             "Pruebas de multiplicación",
@@ -125,7 +126,9 @@ public class CalculadoraTest {
         );
     }
 
+    
     @Test
+    @DisplayName("Pruebas de division")
     public void testDivision() {
         assertAll(
             "Pruebas de división",
@@ -142,7 +145,7 @@ public class CalculadoraTest {
         
         assertEquals(2, result, 0);
         
-        fail("No es igual a 2 el resultado.");
+        
     }
     
     @Test
@@ -150,7 +153,7 @@ public class CalculadoraTest {
     public void testExponenciacionPotenciaBaseNegativa() {
         double result = calculadora.exponenciacion(-2, 1);
         
-        assertTrue(result == 4.0, "El resultado no es igual a 4.0.");
+        assertTrue(result == -2.0, "El resultado no es igual a 4.0.");
     }
     
     @Test
@@ -171,8 +174,5 @@ public class CalculadoraTest {
 
     
   
-
-    //----------------------MULTIPLICACION Y DIVISION----------------------------------
-
 
 }
