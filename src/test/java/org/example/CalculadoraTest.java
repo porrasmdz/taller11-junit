@@ -70,13 +70,6 @@ public class CalculadoraTest {
         System.out.println("Finalizando todas las pruebas de Calculadora.");
     }
 
-    @BeforeEach
-    public void setUp() {
-        System.out.println("Iniciando prueba.");
-        instance = new Calculadora();
-        assertNotNull(instance);
-    }
-
     @AfterEach
     public void tearDown() {
         System.out.println("Prueba finalizada.");
@@ -86,11 +79,11 @@ public class CalculadoraTest {
     public void testMultiplicacion() {
         assertAll(
             "Pruebas de multiplicación",
-            () -> assertEquals(15.0, instance.multiplicacion(5.0, 3.0), 0.0),
-            () -> assertEquals(-15.0, instance.multiplicacion(-5.0, 3.0), 0.0),
-            () -> assertEquals(15.0, instance.multiplicacion(-5.0, -3.0), 0.0),
-            () -> assertEquals(15.0, instance.multiplicacion(5.0, 3.0), 0.0),
-            () -> assertEquals(0.0, instance.multiplicacion(5.0, 0.0), 0.0)
+            () -> assertEquals(15.0, calculadora.multiplicacion(5.0, 3.0), 0.0),
+            () -> assertEquals(-15.0, calculadora.multiplicacion(-5.0, 3.0), 0.0),
+            () -> assertEquals(15.0, calculadora.multiplicacion(-5.0, -3.0), 0.0),
+            () -> assertEquals(15.0, calculadora.multiplicacion(5.0, 3.0), 0.0),
+            () -> assertEquals(0.0, calculadora.multiplicacion(5.0, 0.0), 0.0)
         );
     }
 
@@ -98,9 +91,9 @@ public class CalculadoraTest {
     public void testDivision() {
         assertAll(
             "Pruebas de división",
-            () -> assertEquals(2.0, instance.division(6.0, 3.0), 0.0),
-            () -> assertThrows(IllegalArgumentException.class, () -> instance.division(6.0, 0.0)),
-            () -> assertEquals(-2.0, instance.division(-6.0, 3.0), 0.0)
+            () -> assertEquals(2.0, calculadora.division(6.0, 3.0), 0.0),
+            () -> assertThrows(IllegalArgumentException.class, () -> calculadora.division(6.0, 0.0)),
+            () -> assertEquals(-2.0, calculadora.division(-6.0, 3.0), 0.0)
         );
     }
     //--------------------------------------------------------
@@ -182,20 +175,6 @@ public class CalculadoraTest {
     }
 
     /**
-     * Test of multiplicacion method, of class Calculadora.
-     */
-    @Test
-    public void testMultiplicacion() {
-        System.out.println("multiplicacion");
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.multiplicacion();
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of division method, of class Calculadora.
      */
     @Test
@@ -206,20 +185,6 @@ public class CalculadoraTest {
         Calculadora instance = new Calculadora();
         double expResult = 0.0;
         double result = instance.division(dividendo, divisor);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of division method, of class Calculadora.
-     */
-    @Test
-    public void testDivision() {
-        System.out.println("division");
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.division();
         assertEquals(expResult, result, 0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -288,6 +253,4 @@ public class CalculadoraTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
->>>>>>> 87d2e682566ccad9f7b02f2cb7813d462d6b0f47
 }
