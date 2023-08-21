@@ -170,9 +170,42 @@ public class CalculadoraTest {
         double result = calculadora.exponenciacion(2, 0); // Exponente 0
         
         assertTrue(result == 1.0, "El resultado debería ser 1.0.");
+   
+    }
+    
+     @BeforeAll
+    public static void setUpClass() {
+        System.out.println("Antes de todas las pruebas");
+    }
+
+    @Test
+    public void testRadicacionNumeroPositivo() {
+        double numero = 4.0;
+        double indice = 2.0;
+        double expResult = 2.0;
+        double result = calculadora.radicacion(numero, indice);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    @Test
+    public void testRadicacionNumeroNegativo() {
+        double numero = -4.0;
+        double indice = 2.0;
+        assertThrows(IllegalArgumentException.class, () -> calculadora.radicacion(numero, indice));
+    }
+
+    @Test
+    public void testRadicacionEnesima() {
+        double numero = 8.0;
+        double indice = 3.0;
+        double expResult = 2.0;
+        double result = calculadora.radicacion(numero, indice);
+        assertEquals(expResult, result, 0.0);
     }
 
     
+}
+
+ 
   
 
-}
