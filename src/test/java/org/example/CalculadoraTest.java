@@ -177,34 +177,38 @@ public class CalculadoraTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of exponenciacion method, of class Calculadora.
-     */
-    @Test
-    public void testExponenciacion_double_double() {
-        System.out.println("exponenciacion");
-        double base = 0.0;
-        double exponente = 0.0;
-        Calculadora instance = new Calculadora();
-        double expResult = 0.0;
-        double result = instance.exponenciacion(base, exponente);
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     @Test
     @DisplayName("Exponenciación: Potencia positiva")
     public void testExponenciacionPotenciaPositiva() {
-        
-        
-        Calculadora calculadora = new Calculadora();
-        
         double result = calculadora.exponenciacion(2, 1);
         
         assertEquals(2, result, 0);
         
         fail("No es igual a 2 el resultado.");
+    }
+    
+    @Test
+    @DisplayName("Exponenciación: Potencia con base negativa y exponente par")
+    public void testExponenciacionPotenciaBaseNegativa() {
+        double result = calculadora.exponenciacion(-2, 1);
+        
+        assertTrue(result == 4.0, "El resultado no es igual a 4.0.");
+    }
+    
+    @Test
+    @DisplayName("Exponenciación: Potencia con base negativa y exponente impar")
+    public void testExponenciacionPotenciaNegativaBaseImpar() {
+        double result = calculadora.exponenciacion(-2, 3); // Exponente impar
+        
+        assertNotNull(result, "El resultado no debería ser nulo.");
+    }
+    
+    @Test
+    @DisplayName("Exponenciación: Potencia con exponente 0")
+    public void testExponenciacionPotenciaExponenteCero() {
+        double result = calculadora.exponenciacion(2, 0); // Exponente 0
+        
+        assertTrue(result == 1.0, "El resultado debería ser 1.0.");
     }
 
     /**
