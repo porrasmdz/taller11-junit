@@ -1,40 +1,60 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 package org.example;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 
 /**
  *
- * @author infrative
+ * @author ANDRES PORRAS
  */
 public class CalculadoraTest {
-    
-    public CalculadoraTest() {
+    private Calculadora calculadora;
+
+    @BeforeEach
+    void setUp() {
+        calculadora = new Calculadora();
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
+
+    @Test
+    @DisplayName("Suma Basica")
+    public void testSumaBasica() {
+        double a = 5.0;
+        double b = 3.0;
+        
+        double expResult = 8.0;
+        double result = calculadora.suma(a, b);
+        assertEquals(expResult, result, 0.0);
     }
+
+    @Test
     
-    @AfterClass
-    public static void tearDownClass() {
+    @DisplayName("Suma Negativos")
+    public void testSumaNegativos() {
+        double a = -5.0;
+        double b = -3.0;
+        double expResult = -8.0;
+        double result = calculadora.suma(a, b);
+        assertEquals(expResult, result, 0.0);
     }
+
+    @Test
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    @DisplayName("Suma Positivos")
+    public void testSumaPositivos() {
+        double a = 5.0;
+        double b = 3.0;
+        double expResult = 8.0;
+        double result = calculadora.suma(a, b);
+        assertEquals(expResult, result, 0.0);
     }
 
     /**
