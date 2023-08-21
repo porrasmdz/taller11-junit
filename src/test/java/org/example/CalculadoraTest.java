@@ -169,6 +169,53 @@ public class CalculadoraTest {
         assertTrue(result == 1.0, "El resultado debería ser 1.0.");
    
     }
+    
+     @BeforeAll
+    public static void setUpClass() {
+        System.out.println("Antes de todas las pruebas");
+    }
+
+    @BeforeEach
+    public void setUp() {
+        instance = new Calculadora();
+        System.out.println("Antes de cada prueba");
+    }
+
+    @AfterEach
+    public void tearDown() {
+        instance = null;
+        System.out.println("Después de cada prueba");
+    }
+
+    @Test
+    public void testRadicacionNumeroPositivo() {
+        double numero = 4.0;
+        double indice = 2.0;
+        double expResult = 2.0;
+        double result = instance.radicacion(numero, indice);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    @Test
+    public void testRadicacionNumeroNegativo() {
+        double numero = -4.0;
+        double indice = 2.0;
+        assertThrows(IllegalArgumentException.class, () -> instance.radicacion(numero, indice));
+    }
+
+    @Test
+    public void testRadicacionEnesima() {
+        double numero = 8.0;
+        double indice = 3.0;
+        double expResult = 2.0;
+        double result = instance.radicacion(numero, indice);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    @AfterAll
+    public static void tearDownClass() {
+        System.out.println("Después de todas las pruebas");
+    }
 }
 
  
