@@ -258,6 +258,58 @@ public class CalculadoraTest {
     /**
      * Test of radicacion method, of class Calculadora.
      */
+    
+    
+    
+    //----------------------Radicacion----------------------------------
+    
+     @BeforeAll
+    public static void setUpClass() {
+        System.out.println("Antes de las pruebas");
+    }
+
+    @BeforeEach
+    public void setUp() {
+        instance = new Calculadora();
+        System.out.println("Antes de cada prueba");
+    }
+
+    @AfterEach
+    public void tearDown() {
+        instance = null;
+        System.out.println("Después de cada prueba");
+    }
+
+    @Test
+    public void testRadicacionNumeroPositivo() {
+        double numero = 4.0;
+        double indice = 2.0;
+        double expResult = 2.0;
+        double result = instance.radicacion(numero, indice);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    @Test
+    public void testRadicacionNumeroNegativo() {
+        double numero = -4.0;
+        double indice = 2.0;
+        assertThrows(IllegalArgumentException.class, () -> instance.radicacion(numero, indice));
+    }
+
+    @Test
+    public void testRadicacionEnesima() {
+        double numero = 8.0;
+        double indice = 3.0;
+        double expResult = 2.0;
+        double result = instance.radicacion(numero, indice);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    @AfterAll
+    public static void tearDownClass() {
+        System.out.println("Después de las pruebas");
+    }
+    
     @Test
     public void testRadicacion_double_double() {
         System.out.println("radicacion");
@@ -284,6 +336,9 @@ public class CalculadoraTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
+    
+    
     
 >>>>>>> 87d2e682566ccad9f7b02f2cb7813d462d6b0f47
 }
